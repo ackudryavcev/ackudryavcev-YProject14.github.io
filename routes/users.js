@@ -8,8 +8,8 @@ routerUser.get('/', (req, res) => {
 routerUser.get('/:id', (req, res) => {
   const { id } = req.params;
   for (let i = 0; i < users.length; i += 1) {
-    // eslint-disable-next-line eqeqeq
-    if (users[i]._id == id) {
+    // eslint-disable-next-line no-underscore-dangle
+    if (users[i]._id === id) {
       res.send(users[i]);
       return;
     }
