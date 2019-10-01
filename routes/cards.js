@@ -1,7 +1,9 @@
+import cards from '../data/cards';
+
 const routerCards = require('express').Router();
-const cards = require('../data/cards');
+
 
 routerCards.get('/', (req, res) => {
   res.send(cards);
 });
-module.exports = routerCards;
+export default routerCards;
