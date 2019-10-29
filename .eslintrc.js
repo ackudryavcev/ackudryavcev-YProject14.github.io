@@ -21,5 +21,13 @@ module.exports = {
     'react',
   ],
   rules: {
+  "strict": "off",
+  "indent": ["error", "tab"],
+  "linebreak-style": ["error", "unix"],
+  "quotes": ["error", "double"],
+  "semi": ["error", "always"],
+  "no-underscore-dangle": "off",
+  "no-tabs": "off",
+  "no-shadow": "off"
   },
 };

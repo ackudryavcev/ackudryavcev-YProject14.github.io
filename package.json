@@ -1,8 +1,8 @@
 {
   "name": "yandex",
   "version": "0.0.1",
-  "homepage": "https://github.com/ackudryavcev/Project12.github.io",
-  "description": "Яндекс практикум. Проектная работа 12",
+  "homepage": "https://github.com/ackudryavcev/Project13.github.io",
+  "description": "Яндекс практикум. Проектная работа 13",
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
@@ -26,8 +26,12 @@
     "webpack-md5-hash": "0.0.6"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "core-js": "^3.1.4",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongodb": "^3.3.3",
+    "mongoose": "^5.7.3",
+    "underscore": "^1.9.1"
   },
   "repository": {
     "type": "git",
