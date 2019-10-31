@@ -16,6 +16,8 @@ module.exports.createCard = (req, res) => {
 
 module.exports.deleteCard = (req, res) => {
   card.findByIdAndRemove(req.params.cardId)
-    .then((card) => res.send({ data: card }))
+    .then((card) => {
+      if (!card) { res.status(404).send({ message: 'Нет такой карточки' }); } else { res.send({ data: card }); }
+    })
     .catch((err) => res.status(500).send({ message: `Возникла ошибка ${err.message}` }));
 };
