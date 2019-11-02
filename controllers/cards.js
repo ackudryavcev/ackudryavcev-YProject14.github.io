@@ -16,6 +16,13 @@ module.exports.createCard = (req, res) => {
 
 module.exports.deleteCard = (req, res) => {
   card.findByIdAndRemove(req.params.cardId)
+    // eslint-disable-next-line consistent-return
+    .then((card) => {
+      if (!card.owner.equals(req.user._id)) {
+      // eslint-disable-next-line prefer-promise-reject-errors
+        return Promise.reject({ message: 'Чужая карточка' });
+      }
+    })
     .then((card) => {
       if (!card) { res.status(404).send({ message: 'Нет такой карточки' }); } else { res.send({ data: card }); }
     })

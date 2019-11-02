@@ -1,5 +1,6 @@
 module.exports = {
   env: {
+    browser: true,
     es6: true,
     node: true,
   },
@@ -10,13 +11,12 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
-  parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
-  },
+  plugins: [
+    'react',
+  ],
   rules: {
-  "strict": "off",
-  "no-underscore-dangle": "off",
-  "no-shadow": "off"
+    "strict": "off",
+    "no-underscore-dangle": "off",
+    "no-shadow": "off",
   },
 };
