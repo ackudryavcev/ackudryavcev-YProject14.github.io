@@ -15,7 +15,7 @@ module.exports.createCard = (req, res) => {
 };
 
 module.exports.deleteCard = (req, res) => {
-  card.findByIdAndRemove(req.params.cardId)
+  card.findById(req.params.id)
     // eslint-disable-next-line consistent-return
     .then((card) => {
       if (!card.owner.equals(req.user._id)) {
@@ -23,8 +23,7 @@ module.exports.deleteCard = (req, res) => {
         return Promise.reject({ message: 'Чужая карточка' });
       }
     })
-    .then((card) => {
-      if (!card) { res.status(404).send({ message: 'Нет такой карточки' }); } else { res.send({ data: card }); }
-    })
-    .catch((err) => res.status(500).send({ message: `Возникла ошибка ${err.message}` }));
+    .then(() => card.findByIdAndRemove(req.params.id))
+    .then((card) => res.send(card))
+    .catch((err) => res.status(403).send({ message: `Возникла ошибка ${err.message}` }));
 };
