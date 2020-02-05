@@ -15,15 +15,16 @@ module.exports.createCard = (req, res) => {
 };
 
 module.exports.deleteCard = (req, res) => {
-  card.findById(req.params.id)
+  card.findById(req.params.cardId)
     // eslint-disable-next-line consistent-return
     .then((card) => {
       if (!card.owner.equals(req.user._id)) {
       // eslint-disable-next-line prefer-promise-reject-errors
         return Promise.reject({ message: 'Чужая карточка' });
       }
+      if (!card) return Promise.reject(new Error('Такой карты нет'));
     })
     .then(() => card.findByIdAndRemove(req.params.id))
-    .then((card) => res.send(card))
-    .catch((err) => res.status(403).send({ message: `Возникла ошибка ${err.message}` }));
+    .then((card1) => res.send(card1))
+    .catch((err) => res.status(404).send({ message: `Возникла ошибка ${err.message}` }));
 };
